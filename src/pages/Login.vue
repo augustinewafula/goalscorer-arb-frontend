@@ -4,7 +4,7 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container">
-						<img src="img/icons/android-chrome-192x192.png" width="100" class="brand_logo" alt="Logo">
+						<img src="img/icons/android-icon-192x192.png" width="100" class="brand_logo" alt="Logo">
 					</div>
 				</div>  
                 <base-alert v-show="form_has_error" type="info">
