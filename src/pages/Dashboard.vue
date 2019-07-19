@@ -18,7 +18,7 @@
           }"
           :pagination-options="{
             enabled: true,
-            perPage: 15,
+            perPage: 10,
           }"/>
         </card>
       </div>
