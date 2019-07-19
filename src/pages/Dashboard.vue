@@ -19,7 +19,11 @@
           :pagination-options="{
             enabled: true,
             perPage: 10,
-          }"/>
+          }">
+            <div slot="emptystate">
+              There are no arbs currently. Check back later 😉
+            </div>
+          </vue-good-table>
         </card>
       </div>
       <div class="col-lg-4 col-md-12">
