@@ -44,7 +44,7 @@
                 </p>
               </a>
               <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Log out</a>
+                <a href="#" @click.prevent="logout()" class="nav-item dropdown-item">Log out</a>
               </li>
             </base-dropdown>
           </ul>
@@ -97,6 +97,10 @@
       },
       toggleMenu() {
         this.showMenu = !this.showMenu;
+      },
+      logout() {
+        localStorage.removeItem('token')
+        this.$router.push({path: '/login'})
       }
     }
   };
