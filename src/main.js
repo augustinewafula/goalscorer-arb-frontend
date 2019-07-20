@@ -11,10 +11,12 @@ import 'vue-good-table/dist/vue-good-table.css'
 import BlackDashboard from "./plugins/blackDashboard";
 import i18n from "./i18n"
 import './registerServiceWorker'
+import VModal from 'vue-js-modal'
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
 Vue.use(RouterPrefetch);
 Vue.use(VueGoodTablePlugin);
+Vue.use(VModal)
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['x-access-token'] = localStorage.token

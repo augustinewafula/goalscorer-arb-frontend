@@ -27,7 +27,7 @@
         </card>
       </div>
       <div class="col-md-4 col-sm-12">
-        <card class="card game-info fixed-content">
+        <card class="d-sm-none d-md-block card game-info fixed-content">
           <h3 slot="header" class="card-title">Game Info</h3>
           <div v-show="game_info_has_data">
             <h4 style="text-transform: none"><span style="margin-left: 0">{{ game_info.home_team }}</span> Vs	<span>{{ game_info.away_team }}</span></h4>
@@ -47,6 +47,28 @@
 
         </card>        
       </div>
+      <modal name="game-info-dialog"
+      :maxWidth="30"
+      >
+        <center>          
+          <h3 slot="header" class="card-title">Game Info</h3>
+          <div v-show="game_info_has_data">
+            <h4 style="text-transform: none"><span style="margin-left: 0">{{ game_info.home_team }}</span> Vs	<span>{{ game_info.away_team }}</span></h4>
+            <h5>Kick off: <span>{{ game_info.kick_off | formatDate }}</span></h5>
+            <h5>Player name: <span>{{ game_info.player_name }}</span></h5>
+            <div class="row">
+              <div class="col-md-6">
+                <h5>Betika (Yes) : <span>{{ game_info.yes_odd }}</span></h5>            
+              </div>
+              <div class="col-md-6">
+                <h5>Betwinner (No) : <span>{{ game_info.no_odd }}</span></h5>
+              </div>
+            </div> <br>
+            <h5>Arb Percentage: <span>{{ game_info.arb_percentage }}</span>%</h5>
+          </div>                            
+          <p v-show="!game_info_has_data">Click a match on the table to view more info here</p>
+        </center>
+      </modal>
     </div>
   </div>
 </template>
@@ -134,12 +156,15 @@
         this.game_info.kick_off = params.row.start_time
 
         this.game_info_has_data = true
+        if (window.innerWidth < 768) {
+          this.$modal.show('game-info-dialog');
+        } 
         // params.row - row object 
         // params.pageIndex - index of this row on the current page.
         // params.selected - if selection is enabled this argument 
         // indicates selected or not
         // params.event - click event
-      }      
+      }
     },
     filters: {
       formatDate: function (value) {
@@ -180,6 +205,9 @@ table.vgt-table{
     position:sticky ;
     top: 60px;
    
+}
+.v--modal{
+  background-color: #27293D !important;
 }
 </style>
 
