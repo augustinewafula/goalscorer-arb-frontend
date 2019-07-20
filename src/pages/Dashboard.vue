@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-lg-8 col-md-12">
+      <div class="col-md-8 col-sm-12">
         <card class="card" :header-classes="{'text-right': isRTL}">
           <a href="#" @click.prevent="refreshArbs()"><i class="tim-icons icon-refresh-02" :class="refreshingAnimation" style="font-size: 25px; margin-bottom: 10px"></i></a>          
           <vue-good-table
@@ -26,7 +26,7 @@
           </vue-good-table>
         </card>
       </div>
-      <div class="col-lg-4 col-md-12">
+      <div class="col-md-4 col-sm-12">
         <card class="card game-info fixed-content">
           <h3 slot="header" class="card-title">Game Info</h3>
           <div v-show="game_info_has_data">
@@ -177,8 +177,8 @@ table.vgt-table{
   font-size: .875rem !important;
 }
 .fixed-content {
-    position:fixed;
-    width: 370px;
+    position:sticky ;
+    top: 60px;
    
 }
 </style>
