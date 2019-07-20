@@ -3,12 +3,6 @@ const webpack = require('webpack');
 module.exports = {
   lintOnSave: false,
   configureWebpack: {
-    // Set up all the aliases we use in our app.
-    resolve: {
-      alias: {
-        'chart.js': 'chart.js/dist/Chart.js'
-      }
-    },
     plugins: [
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 6
@@ -16,11 +10,19 @@ module.exports = {
     ]
   },
   pwa: {
-    name: 'Vue Black Dashboard',
+    name: 'Goalscorer Arb',
     themeColor: '#344675',
     msTileColor: '#344675',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: '#344675'
+    appleMobileWebAppStatusBarStyle: '#344675',
+
+    // configure the workbox plugin
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      // swSrc is required in InjectManifest mode.
+      swSrc: 'src/service-worker.js'
+      // ...other Workbox options...
+    }
   },
   pluginOptions: {
     i18n: {
