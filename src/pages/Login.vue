@@ -11,23 +11,35 @@
                     <span>{{error_message}}</span>
                 </base-alert>                                
 				<div class="d-flex justify-content-center form_container">                    
-					<form>
+					<form v-on:submit.prevent="onSubmit">
 						<div class="input-group mb-3">
 							<input type="text" name="" v-model="username" class="form-control input_user" value="" placeholder="username" required>
 						</div>
 						<div class="input-group mb-2">
 							<input type="password" name="" v-model="password" class="form-control input_pass" value="" placeholder="password" required>
 						</div>
+                        <div class="input-group mb-2">                            
+                            <button type="submit" style="margin-top: 20px" name="button" class="btn login_btn">
+                                <div v-show="isLoading" class="ld ld-ring ld-spin"></div>
+                                <span v-show="!isLoading">Login</span>
+                            </button>
+                        </div>
 					</form>
 				</div>
-				<div class="d-flex justify-content-center mt-3 login_container">
-					<button type="button" @click="submit" name="button" class="btn login_btn">Login</button>
-				</div>
+				<!-- <div class="d-flex justify-content-center mt-3 login_container">
+					<button type="button" @click="submit" name="button" class="btn login_btn">
+                        <div v-show="isLoading" class="ld ld-ring ld-spin"></div>
+                        <span v-show="!isLoading">Login</span>
+                    </button>
+				</div> -->
 			</div>
 		</div>
 	</div>
 </template>
-
+<style>
+@import 'https://loading.io/css/loading.css';
+@import 'https://loading.io/css/loading-btn.css';    
+</style>
 <script>
 import axios from 'axios'
 import NotificationTemplate from './Notifications/NotificationTemplate';
@@ -41,10 +53,16 @@ export default {
         password : '',
         type: ["", "info", "success", "warning", "danger"],
         form_has_error : false,
-        error_message : ''
+        error_message : '',
+        isLoading : false,
     }),
     methods: {
-        submit () {
+        onSubmit () {
+            if(!(this.username && this.password)){
+                console.log('Fill all the details')
+                return
+            }
+            this.isLoading = true
             axios.get('/login', {
                 auth : {
                     username: this.username,
@@ -52,11 +70,13 @@ export default {
                 }
             })
             .then((response)=>{
+                this.isLoading = false
                 localStorage.setItem('token', response.data.token)
                 axios.defaults.headers.common['x-access-token'] = response.data.token
                 this.$router.push({path: '/dashboard'})
             })
             .catch((error)=>{
+                this.isLoading = false
                 this.error_message = error.response.data
                 this.form_has_error = true
             });
@@ -67,8 +87,8 @@ export default {
 
 <style scoped>
 .user_card {
-    height: 400px;
-    width: 350px;
+    height: 380px;
+    width: 360px;
     margin-top: 100px;
     margin-bottom: auto;
     background: #27293D;
@@ -107,7 +127,6 @@ export default {
     }
     .login_btn {
         width: 100%;
-        background: #c0392b !important;
         color: white !important;
     }
     .login_btn:focus {
