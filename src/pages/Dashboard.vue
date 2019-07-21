@@ -27,7 +27,7 @@
         </card>
       </div>
       <div class="col-md-4 col-sm-12">
-        <card class="d-sm-none d-md-block card game-info fixed-content">
+        <card class="d-none d-md-block card game-info fixed-content">
           <h3 slot="header" class="card-title">Game Info</h3>
           <div v-show="game_info_has_data">
             <h4 style="text-transform: none"><span style="margin-left: 0">{{ game_info.home_team }}</span> Vs	<span>{{ game_info.away_team }}</span></h4>
@@ -48,7 +48,7 @@
         </card>        
       </div>
       <modal name="game-info-dialog"
-      :maxWidth="30"
+      :width="300"
       >
         <center>          
           <h3 slot="header" class="card-title">Game Info</h3>
