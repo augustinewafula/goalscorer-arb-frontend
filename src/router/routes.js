@@ -29,9 +29,9 @@ const routes = [
     ]
   },
   { path: "*", 
-    component: NotFound ,
+    component: Login ,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
 ];
