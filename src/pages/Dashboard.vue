@@ -35,10 +35,10 @@
             <h5>Player name: <span>{{ game_info.player_name }}</span></h5>
             <div class="row">
               <div class="col-md-6">
-                <h5>Betika (Yes) : <span>{{ game_info.yes_odd }}</span></h5>            
+                <h5 class="first-to-upper">{{ game_info.yes_bookie }} (Yes) : <span>{{ game_info.yes_odd }}</span></h5>            
               </div>
               <div class="col-md-6">
-                <h5>Betwinner (No) : <span>{{ game_info.no_odd }}</span></h5>
+                <h5 class="first-to-upper">{{ game_info.no_bookie }} (No) : <span>{{ game_info.no_odd }}</span></h5>
               </div>
             </div> <br>
             <h5>Arb Percentage: <span>{{ game_info.arb_percentage }}</span>%</h5>
@@ -58,10 +58,10 @@
             <h5>Player name: <span>{{ game_info.player_name }}</span></h5>
             <div class="row">
               <div class="col-md-6">
-                <h5>Betika (Yes) : <span>{{ game_info.yes_odd }}</span></h5>            
+                <h5 class="first-to-upper">{{ game_info.yes_bookie }} (Yes) : <span>{{ game_info.yes_odd }}</span></h5>            
               </div>
               <div class="col-md-6">
-                <h5>Betwinner (No) : <span>{{ game_info.no_odd }}</span></h5>
+                <h5 class="first-to-upper">{{ game_info.no_bookie }} (No) : <span>{{ game_info.no_odd }}</span></h5>
               </div>
             </div> <br>
             <h5>Arb Percentage: <span>{{ game_info.arb_percentage }}</span>%</h5>
@@ -90,6 +90,8 @@
           kick_off : '',
           yes_odd : '',
           no_odd : '',
+          yes_bookie : '',
+          no_bookie : '',
           arb_percentage : ''
         },
         columns: [
@@ -150,8 +152,10 @@
         this.game_info.home_team = params.row.home_team
         this.game_info.away_team = params.row.away_team
         this.game_info.player_name = params.row.player_name
-        this.game_info.yes_odd = params.row.betika_odd
-        this.game_info.no_odd = params.row.betwinner_odd
+        this.game_info.yes_odd = params.row.yes_odd
+        this.game_info.no_odd = params.row.no_odd
+        this.game_info.yes_bookie = params.row.yes_bookie
+        this.game_info.no_bookie = params.row.no_bookie
         this.game_info.arb_percentage = params.row.arb_percent
         this.game_info.kick_off = params.row.start_time
 
@@ -208,6 +212,9 @@ table.vgt-table{
 }
 .v--modal{
   background-color: #27293D !important;
+}
+.first-to-upper:first-letter{
+  text-transform: uppercase;
 }
 </style>
 
