@@ -21,7 +21,12 @@
             perPage: 10,
           }">
             <div slot="emptystate">
-              There are no arbs currently. Check back later 😉
+              <div v-show="isLoading" class="progress-horizontal">
+                <div class="bar-horizontal"></div>
+              </div>
+              <span v-show="!isLoading">
+                There are no rows currently. Check back later 😉
+              </span>
             </div>
           </vue-good-table>
         </card>
@@ -80,6 +85,7 @@
   export default {
     data() {
       return {
+        isLoading : true,
         isRefreshing : false,
         refreshingAnimation : '',
         game_info_has_data : false,
@@ -129,7 +135,7 @@
     },
     methods: {
       getArbs () {
-        // Make a request for arbs
+        // Make a request for rows
         axios.get('/arbs')
           .then((response)=>{
             // handle success
@@ -182,6 +188,9 @@
         }  else{
           this.refreshingAnimation = ''
         }     
+      },
+      rows(){
+        this.isLoading = false
       }
     },
     mounted() {
@@ -201,6 +210,42 @@
   };
 </script>
 <style>
+.progress-horizontal {
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  background-color: rgba(0,0,0,0.34);
+  overflow: hidden;
+}
+
+.bar-horizontal {
+  width: 50%;
+  height: 100%;
+  margin-left: 0;
+  background-color: #3EAA78;
+  
+  animation-name: spinner;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in-out;
+  animation-play-state: running;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spinner {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+    margin-left: 50%;
+  }
+  100% {
+    width: 0;
+    margin-left: 100%;
+  }
+}
 table.vgt-table{
   font-family: Poppins,sans-serif;
   font-size: .875rem !important;
