@@ -24,9 +24,10 @@ if (process.env.NODE_ENV === 'production') {
     },
     updated () {
       console.log('New content is available; please refresh.')
-      setTimeout(() => {
-        window.location.reload(true)
-      }, 1000)
+      const updateBanner = document.getElementById("update-banner");
+      const updateButton = document.getElementById("update-button");
+
+      updateBanner.style.display = "block";
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
