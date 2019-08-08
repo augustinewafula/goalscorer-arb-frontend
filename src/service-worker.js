@@ -30,9 +30,61 @@ if (workbox) {
     workbox.skipWaiting()
     workbox.clientsClaim()
   
-    workbox.precaching.precacheAndRoute(self.__precacheManifest)
+    workbox.precaching.precacheAndRoute(self.__precacheManifest)    
+    workbox.precaching.precacheAndRoute([]);
+
+        // Cache images:
+    workbox.routing.registerRoute(
+      /\.(?:png|gif|jpg|jpeg|svg)$/,
+      workbox.strategies.staleWhileRevalidate({
+        cacheName: "images",
+        plugins: [
+          new workbox.expiration.Plugin({
+            maxEntries: 60,
+            maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+          })
+        ]
+      })
+    );
+    
+    // Cache Google fonts, font awesome and boostrap:
+    workbox.routing.registerRoute(
+      new RegExp("https://fonts.(?:googleapis|gstatic).com/(.*)"),
+      workbox.strategies.cacheFirst({
+        cacheName: "googleapis",
+        plugins: [
+          new workbox.expiration.Plugin({
+            maxEntries: 30,
+            maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+          })
+        ]
+      })
+    );
+    workbox.routing.registerRoute(
+      new RegExp("https://use.(?:fontawesome).com/(.*)"),
+      workbox.strategies.cacheFirst({
+        cacheName: "fontawesome",
+        plugins: [
+          new workbox.expiration.Plugin({
+            maxEntries: 30,
+            maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+          })
+        ]
+      })
+    );
+    workbox.routing.registerRoute(
+      new RegExp("https://cdnjs.(?:cloudflare).com/(.*)"),
+      workbox.strategies.cacheFirst({
+        cacheName: "bootstrap",
+        plugins: [
+          new workbox.expiration.Plugin({
+            maxEntries: 30,
+            maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+          })
+        ]
+      })
+    );
     workbox.precaching.suppressWarnings()
-      workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
   
   } else {
     console.log(`Workbox didn't load`)
