@@ -25,7 +25,7 @@
                 <div class="bar-horizontal"></div>
               </div>
               <span v-show="!isLoading">
-                There are no rows currently. Check back later 😉
+                There are no arbs currently. Check back later 😉
               </span>
             </div>
           </vue-good-table>
