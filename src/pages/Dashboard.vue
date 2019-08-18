@@ -117,7 +117,7 @@
           dateOutputFormat: 'MM/DD/YYYY HH:mm', // outputs Mar 16th 2018
         },
         {
-          label: 'Arb Percentage',
+          label: '%',
           field: 'arb_percent',
           type: 'number',
         },
