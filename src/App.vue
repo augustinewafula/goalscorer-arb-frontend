@@ -18,7 +18,7 @@
   import axios from 'axios'
   export default {
     data: () => ({  
-        showNofication : true,
+        showNofication : false,
     }),
     methods: {
       disableRTL() {
