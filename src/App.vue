@@ -2,7 +2,7 @@
   <div>
     <notifications></notifications>
     <div class="notifications">
-      <span mode="in-out">
+      <span mode="in-out" classs="col-md-10">
         <div id="update-banner" v-show="showNofication" data-notify="container" role="alert" data-notify-position="top-center" class="alert open alert-with-icon bottom right alert-info" style="bottom: 20px;">
           <button type="button" @click="hideNotification()" aria-hidden="true" data-notify="dismiss" class="close col-xs-1"><i class="tim-icons icon-simple-remove"></i></button>
           <span data-notify="icon" class="alert-icon tim-icons icon-bell-55"></span>
@@ -18,7 +18,7 @@
   import axios from 'axios'
   export default {
     data: () => ({  
-        showNofication : false,
+        showNofication : true,
     }),
     methods: {
       disableRTL() {
@@ -55,5 +55,8 @@
     }
   };
 </script>
-
-<style lang="scss"></style>
+<style>
+.notifications .alert[data-notify="container"] {
+    width: auto !important;
+}
+</style>
