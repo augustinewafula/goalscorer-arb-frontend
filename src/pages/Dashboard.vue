@@ -53,7 +53,7 @@
         </card>        
       </div>
       <modal name="game-info-dialog"
-      :width="300"
+      :width="330"
       >
         <center>          
           <h3 slot="header" class="card-title">Game Info</h3>
