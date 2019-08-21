@@ -1,9 +1,9 @@
 {
   "name": "goalscorer-arb",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "private": true,
-  "description": "A sample admin dashboard based on black dashboard UI template",
-  "author": "cristian.jora <joracristi@gmail.com>",
+  "description": "Goalscorer arb frontend",
+  "author": "augustine.wafula <augustinetreezy@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
