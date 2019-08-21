@@ -2,7 +2,8 @@ if (workbox) {
     console.log(`Workbox is loaded`)    
     workbox.core.setCacheNameDetails({ prefix: 'd4' })
     
-    var APP_VERSION =  require('../package.json').version
+    // update app version each time a change is made
+    var APP_VERSION = 'v1.5.1'
     self.addEventListener('activate', (event) => {
       console.log(`%c ${APP_VERSION} `, 'background: #ddd; color: #0000ff')
       if (caches) {

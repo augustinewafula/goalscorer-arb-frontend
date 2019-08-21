@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container-fluid">
       <div class="copyright">
-        © {{year}} made with <i class="tim-icons icon-heart-2"></i> for a better web. Version {{version}}
+        © {{year}} made with <i class="tim-icons icon-heart-2"></i> for a better web. v{{version}}
       </div>
     </div>
   </footer>
