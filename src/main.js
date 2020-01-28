@@ -22,7 +22,7 @@ axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['x-access-token'] = localStorage.token
 // axios.defaults.baseURL = window.location.origin + '/backend/public/api'
 if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = 'https://goalscorer.riwaa.co.ke:5000'
+  axios.defaults.baseURL = 'https://goalscorer.livebettinggoal.com:5000'
 } else {
   axios.defaults.baseURL = 'http://127.0.0.1:5000'
 }
